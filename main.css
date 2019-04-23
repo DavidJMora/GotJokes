@@ -18,3 +18,14 @@ body {
     color: aqua;
     margin: 2em;
 }
+
+#joke-section {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+
+}
+
+#joke {
+    width: 60%;
+}

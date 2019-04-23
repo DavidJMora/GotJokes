@@ -1,18 +1,15 @@
 window.onload = init;
 
 function init() {
+    const randomUrl = 'http://api.icndb.com/jokes/random?escape=javascript';
+    const nerdyUrl = 'http://api.icndb.com/jokes/random?limitTo=[nerdy]&escape=javascript';
+
     document.querySelector('#random')
-        .addEventListener('click', randomJoke);
+        .addEventListener('click', () => sendRequest(randomUrl));
     
     document.querySelector('#nerdy-jokes')
-        .addEventListener('click', nerdyJokes);
+        .addEventListener('click', () => sendRequest(nerdyUrl));
  
-}
-function randomJoke() {
-    event.preventDefault();
-    const url = 'http://api.icndb.com/jokes/random?escape=javascript';
-    
-    sendRequest(url)
 }
 
 function sendRequest(url) {
@@ -28,10 +25,4 @@ function handleData(event) {
     const {value} = rawData;
     const {joke} = value;
     document.querySelector('#joke').innerText = joke;
-    console.log(joke);
-}
-
-function nerdyJokes() {
-    const url = 'http://api.icndb.com/jokes/random?limitTo=[nerdy]';
-    sendRequest(url)
 }
