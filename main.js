@@ -4,19 +4,19 @@ function init() {
     document.querySelector('.button')
         .addEventListener('click', sendRequest);
 
-    console.log(`Requesting data.`);
     sendRequest(); 
-    console.log('Displaying network response:');
 }
 function sendRequest() {
+    event.preventDefault();
     const xhr = new XMLHttpRequest();
-    const url = 'http://api.icndb.com/jokes/56';
+    const url = 'http://api.icndb.com/jokes/random?escape=javascript';
     xhr.open('GET', url);
     xhr.onload = handleData;
     xhr.send();
 }
 function handleData(event) {
-    const joke = JSON.parse(event.target.responseText);
-    
-    console.log(joke);
+    const rawData = JSON.parse(event.target.responseText);
+    const {value} = rawData;
+    const {joke} = value;
+    document.querySelector('#joke').innerText = joke;
 }
