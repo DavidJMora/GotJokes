@@ -9,7 +9,6 @@ function init() {
     
     document.querySelector('#nerdy-jokes')
         .addEventListener('click', () => sendRequest(nerdyUrl));
- 
 }
 
 function sendRequest(url) {
